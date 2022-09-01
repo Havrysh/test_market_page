@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/test_market_page/static/css/main.84487ea8.css",
+    "main.js": "/test_market_page/static/js/main.f5ec59f4.js",
+    "index.html": "/test_market_page/index.html",
+    "main.84487ea8.css.map": "/test_market_page/static/css/main.84487ea8.css.map",
+    "main.f5ec59f4.js.map": "/test_market_page/static/js/main.f5ec59f4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84487ea8.css",
+    "static/js/main.f5ec59f4.js"
+  ]
+}
