@@ -5,3 +5,8 @@ export type Item = {
   deviceType: string;
   imgUrl: string;
 };
+
+export type TCartItem = {
+  id: number;
+  quantity: number;
+};

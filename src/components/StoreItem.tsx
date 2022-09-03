@@ -1,9 +1,9 @@
 import { Button, Card } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
-import { Item } from "../types/Item";
+import { IProduct } from "../types/product";
 
-const StoreItem = ({ id, name, price, imgUrl }: Item) => {
+const StoreItem = ({ id, title, price, image }: IProduct) => {
   const { getItemQuantity, increaseCartQuantity, removeFromCart } =
     useShoppingCart();
 
@@ -13,13 +13,13 @@ const StoreItem = ({ id, name, price, imgUrl }: Item) => {
     <Card className="h-100">
       <Card.Img
         variant="top"
-        src={imgUrl}
+        src={image}
         height="200px"
         style={{ objectFit: "contain" }}
       />
       <Card.Body className="d-flex flex-column">
         <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
-          <span className="fs-2">{name}</span>
+          <span className="flex-shrink-1">{title}</span>
           <span className="ms-2 text-muted">{formatCurrency(price)}</span>
         </Card.Title>
         <div className="mt-auto">

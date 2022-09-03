@@ -1,17 +1,17 @@
 import { Button, Stack } from "react-bootstrap";
 import { useShoppingCart } from "../context/ShoppingCartContext";
-import storeItems from "../data/items.json";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { TCartItem } from "../types/Item";
 
-type CartItemProps = {
-  id: number;
-  quantity: number;
-};
+const CartItem = ({ id, quantity }: TCartItem) => {
+  const {
+    removeFromCart,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    products,
+  } = useShoppingCart();
 
-const CartItem = ({ id, quantity }: CartItemProps) => {
-  const { removeFromCart, increaseCartQuantity, decreaseCartQuantity } =
-    useShoppingCart();
-  const item = storeItems.find((i) => i.id === id);
+  const item = products.find((i) => i.id === id);
   if (item == null) return null;
 
   return (
@@ -21,7 +21,7 @@ const CartItem = ({ id, quantity }: CartItemProps) => {
       className="d-inline-flex align-items-center"
     >
       <img
-        src={item.imgUrl}
+        src={item.image}
         alt="Item image"
         style={{
           width: "75px",

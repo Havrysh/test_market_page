@@ -6,7 +6,7 @@ import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
-const App = () => {
+export const App = () => {
   return (
     <ShoppingCartProvider>
       <Navbar />
@@ -20,5 +20,3 @@ const App = () => {
     </ShoppingCartProvider>
   );
 };
-
-export default App;
