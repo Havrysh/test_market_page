@@ -1,8 +1,12 @@
 Good time of the day. 
 My full name is Havrysh Kostiantyn and I would like to present to your attention a one* page market place with:
+ 
  1.Functioning cart(placing order is not available) - add product or products with quantity counter and uniquality check, calculating total cost for product or whole total for all the products in the cart
+ 
  2.Sorting through dropdown menu by categories, make sure to check last one.
+ 
  3.Search bar - searching through current products in the store, its mean if you choose any category the search will run only among current category.
+ 
  4.Responsive layout made with bootstrap that suits any device screen resolution with opportunity to add and delete any product placed in the store.
 
 
