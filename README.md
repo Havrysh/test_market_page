@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+Good time of the day. 
+My full name is Havrysh Kostiantyn and I would like to present to your attention a one* page market place with:
+ 1.Functioning cart(placing order is not available) - add product or products with quantity counter and uniquality check, calculating total cost for product or whole total for all the products in the cart
+ 2.Sorting through dropdown menu by categories, make sure to check last one.
+ 3.Search bar - searching through current products in the store, its mean if you choose any category the search will run only among current category.
+ 4.Responsive layout made with bootstrap that suits any device screen resolution with opportunity to add and delete any product placed in the store.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -37,10 +41,4 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this .
