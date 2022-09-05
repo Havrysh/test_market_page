@@ -11,4 +11,11 @@ export interface IProduct {
   category: string;
   image: string;
   rating: IRating;
+  quantity: number;
+}
+
+export interface ServerResponse<T> {
+  total_count: number;
+  incomplete_results: boolean;
+  items: T[];
 }

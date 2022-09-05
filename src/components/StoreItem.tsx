@@ -1,13 +1,15 @@
 import { Button, Card } from "react-bootstrap";
-import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
+import { useAppSelector } from "../hooks/redux";
+import { useActions } from "../hooks/actions";
 import { IProduct } from "../types/product";
 
-const StoreItem = ({ id, title, price, image }: IProduct) => {
-  const { getItemQuantity, increaseCartQuantity, removeFromCart } =
-    useShoppingCart();
+const StoreItem = ({id, price, image, title}: IProduct) => {
 
-  const quantity = getItemQuantity(id);
+  const { increaseCartQuantity, removeFromCart } = useActions();
+  const { quantity, cartItems } = useAppSelector((state) => state.cart);
+  const item = cartItems.find(i => i.id === id)
+  // if (item == null) return null;
 
   return (
     <Card className="h-100">
@@ -26,7 +28,7 @@ const StoreItem = ({ id, title, price, image }: IProduct) => {
           {quantity === 0 ? (
             <Button
               className="w-100 shadow-none"
-              onClick={() => increaseCartQuantity(id)}
+              onClick={() => increaseCartQuantity(item)}
             >
               Add To Cart
             </Button>
@@ -34,7 +36,7 @@ const StoreItem = ({ id, title, price, image }: IProduct) => {
             <Button
               variant="outline-danger"
               className="w-100 shadow-none"
-              onClick={() => removeFromCart(id)}
+              onClick={() => removeFromCart(item)}
             >
               Remove
             </Button>

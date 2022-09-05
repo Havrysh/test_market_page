@@ -1,9 +1,11 @@
 import { Button, Container, Nav, Navbar as NavbarBs } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { useShoppingCart } from "../context/ShoppingCartContext";
+import { useActions } from "../hooks/actions";
+import { useAppSelector } from "../hooks/redux";
 
 const Navbar = () => {
-  const { openCart, cartQuantity } = useShoppingCart();
+  const { openCart } = useActions();
+  const { quantity } = useAppSelector((state) => state.cart);
 
   return (
     <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
@@ -19,7 +21,7 @@ const Navbar = () => {
             About
           </Nav.Link>
         </Nav>
-        {cartQuantity > 0 && (
+        {quantity > 0 && (
           <Button
             style={{
               width: "3rem",
@@ -54,7 +56,7 @@ const Navbar = () => {
                 align-items-center
               "
             >
-              {cartQuantity}
+              {quantity}
             </div>
           </Button>
         )}
