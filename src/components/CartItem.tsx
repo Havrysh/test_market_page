@@ -1,17 +1,19 @@
 import { Button, Stack } from "react-bootstrap";
-import { useShoppingCart } from "../context/ShoppingCartContext";
 import { formatCurrency } from "../utilities/formatCurrency";
 import { TCartItem } from "../types/Item";
+import { useAppSelector } from "../hooks/redux";
+import { useActions } from "../hooks/actions";
+import { useGetProductsQuery } from "../store/products.Api";
+import { IProduct } from "../types/product";
 
-const CartItem = ({ id, quantity }: TCartItem) => {
-  const {
-    removeFromCart,
-    increaseCartQuantity,
-    decreaseCartQuantity,
-    products,
-  } = useShoppingCart();
+const CartItem = ({ id }: IProduct) => {
 
-  const item = products.find((i) => i.id === id);
+  const { cartItems, quantity } = useAppSelector((state) => state.cart);
+  const { increaseCartQuantity, decreaseCartQuantity, removeFromCart } =
+    useActions();
+  const { data } = useGetProductsQuery("products");
+
+  const item = data?.find((i) => i.id === id);
   if (item == null) return null;
 
   return (
@@ -47,7 +49,7 @@ const CartItem = ({ id, quantity }: TCartItem) => {
             className="d-flex align-items-center justify-content-center fs-6"
             type="button"
             style={{ width: "1rem", height: "1rem" }}
-            onClick={() => decreaseCartQuantity(id)}
+            onClick={() => decreaseCartQuantity(item)}
           >
             -
           </Button>
@@ -56,7 +58,7 @@ const CartItem = ({ id, quantity }: TCartItem) => {
             className="d-flex align-items-center justify-content-center fs-6"
             type="button"
             style={{ width: "1rem", height: "1rem" }}
-            onClick={() => increaseCartQuantity(id)}
+            onClick={() => increaseCartQuantity(item)}
           >
             +
           </Button>
@@ -70,7 +72,7 @@ const CartItem = ({ id, quantity }: TCartItem) => {
         variant="outline-danger"
         size="sm"
         style={{ width: "30px" }}
-        onClick={() => removeFromCart(item.id)}
+        onClick={() => removeFromCart(item)}
       >
         &times;
       </Button>

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../github_search_advanced/.idea/github_search_advanced.iml" filepath="$PROJECT_DIR$/../github_search_advanced/.idea/github_search_advanced.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/test_shopping_page.iml" filepath="$PROJECT_DIR$/.idea/test_shopping_page.iml" />
     </modules>
   </component>

@@ -1,20 +1,21 @@
-import { Offcanvas, Stack } from "react-bootstrap";
-import { useShoppingCart } from "../context/ShoppingCartContext";
-import { formatCurrency } from "../utilities/formatCurrency";
+import {Offcanvas, Stack} from "react-bootstrap";
+import {formatCurrency} from "../utilities/formatCurrency";
 import CartItem from "./CartItem";
+import {useActions} from "../hooks/actions";
+import {useGetProductsQuery} from "../store/products.Api";
+import {useAppSelector} from "../hooks/redux";
 
-type ShoppingCartProps = {
-  isOpen: boolean;
-};
+const ShoppingCart = () => {
 
-const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
-  const { closeCart, cartItems, products, getProducts } = useShoppingCart();
+  const {closeCart} = useActions();
+  const {cartItems, isOpen} = useAppSelector(state => state.cart)
+  const {data} = useGetProductsQuery("/products");
 
   return (
     <Offcanvas
       show={isOpen}
       onHide={closeCart}
-      onShow={() => getProducts()}
+      onShow={data}
       placement="end"
     >
       <Offcanvas.Header closeButton>
@@ -29,7 +30,7 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
             Total{" "}
             {formatCurrency(
               cartItems.reduce((total, cartItem) => {
-                const item = products.find((i) => i.id === cartItem.id);
+                const item = data?.find((i) => i.id === cartItem.id);
                 return total + (item?.price || 0) * cartItem.quantity;
               }, 0)
             )}
